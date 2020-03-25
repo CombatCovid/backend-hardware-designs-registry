@@ -14,8 +14,6 @@
   "author": "Reed Barger",
   "license": "ISC",
   "dependencies": {
-    "md5": "^2.2.1",
-    "mongoose": "^5.2.6",
     "apollo-server": "^2.9.7",
     "apollo-server-express": "^2.9.6",
     "bcrypt": "^4.0.1",
@@ -28,6 +26,8 @@
     "http-status-codes": "^1.4.0",
     "js-logging-tool": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
+    "md5": "^2.2.1",
+    "mongoose": "^5.9.6",
     "prettier": "^1.18.2",
     "ts-node": "^8.1.0",
     "tslint": "^5.20.0",
