@@ -25,6 +25,6 @@ export const postTypeDef = gql`
   }
 
   type Mutation {
-    addPost(title: String!, imageUrl: String!, categories: [String]!, description: String!, creatorId: ID!): Post!
+    addPost(title: String!, imageUrl: String!, categories: [String]!, description: String!, createdBy: Int!): Post!
   }
 `;

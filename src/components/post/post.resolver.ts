@@ -1,6 +1,6 @@
 import { PostModel } from './models';
 
-export const postResolvers = {
+export const postResolver = {
   Query: {
     getPosts: async (_, args) => {
       const posts = await PostModel.getPosts();

@@ -13,20 +13,20 @@ import { connection } from './utils/dbConnection';
 import { logger } from 'js-logging-tool';
 import mongoose from 'mongoose';
 
+import { designTypeDef } from './components/design/schemas';
 import { postTypeDef } from './components/post/schemas';
 import { userTypeDef } from './components/user/schemas';
 
-import { postResolvers } from './components/post';
+import { designResolver } from './components/design';
+import { postResolver } from './components/post';
 import { userResolvers } from './components/user';
 
 const schema: GraphQLSchema = makeExecutableSchema({
-  typeDefs: [postTypeDef, userTypeDef],
-  resolvers: [postResolvers, userResolvers]
+  typeDefs: [postTypeDef, designTypeDef, userTypeDef],
+  resolvers: [postResolver, designResolver, userResolvers]
 });
 
-const server = new ApolloServer({
-  schema
-});
+const server = new ApolloServer({ schema });
 
 server.applyMiddleware({ app });
 
