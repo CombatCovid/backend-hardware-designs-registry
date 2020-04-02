@@ -1,1 +1,1 @@
-export { postResolvers } from './post.resolver';
+export { postResolver } from './post.resolver';
