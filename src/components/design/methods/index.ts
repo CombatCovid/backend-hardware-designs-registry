@@ -1,9 +1,9 @@
-import { Design } from '../schemas';
+import { Design } from '../../models/design';
 
-class DesignModel {
-  public async getDesigns() {
+export default {
+  getDesigns: async (): Promise<any> => {
     try {
-      const designs = await Design.find({})
+      const designs = await Design.find()
         .sort({ createdDate: 'desc' })
         .populate({
           path: 'createdBy',
@@ -12,18 +12,15 @@ class DesignModel {
 
       return designs;
     } catch (error) {
-      throw error;
+      throw new Error(error);
     }
-  }
-
-  public async addDesign(obj) {
+  },
+  addDesign: async (obj: any): Promise<any> => {
     try {
       const newDesign = await new Design(obj).save();
       return newDesign;
     } catch (error) {
-      throw error;
+      throw new Error(error);
     }
   }
-}
-
-export default new DesignModel();
+};

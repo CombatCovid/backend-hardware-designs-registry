@@ -1,20 +1,20 @@
 import { User } from '../schemas';
 
 class UserModel {
-  public async getUser(condition: object) {
+  public async getUser(condition: object): Promise<any> {
     try {
       return await User.findOne(condition);
-    } catch (error) {
-      throw error;
+    } catch (e) {
+      throw new Error(e);
     }
   }
 
-  public async addUser(obj) {
+  public async addUser(obj: any): Promise<any> {
     try {
       const newUser = await new User(obj).save();
       return newUser;
-    } catch (error) {
-      throw error;
+    } catch (e) {
+      throw new Error(e);
     }
   }
 }

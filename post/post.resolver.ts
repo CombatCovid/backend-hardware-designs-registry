@@ -2,19 +2,16 @@ import { PostModel } from './models';
 
 export const postResolver = {
   Query: {
-    getPosts: async (_, args) => {
+    getPosts: async (): Promise<any> => {
       const posts = await PostModel.getPosts();
       return posts;
     }
   },
 
   Mutation: {
-    addPost: async (_, { title, imageUrl, categories, description, creatorId }) => {
+    addPost: async (_: any, { creatorId, ...args }): Promise<any> => {
       const newPost = await PostModel.addPost({
-        title,
-        imageUrl,
-        categories,
-        description,
+        ...args,
         createdBy: creatorId
       });
       return newPost;
