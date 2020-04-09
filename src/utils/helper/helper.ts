@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import HttpStatus from 'http-status-codes';
 
 /**
@@ -9,13 +9,7 @@ import HttpStatus from 'http-status-codes';
  * @param {Object} payload
  * @param {Object} pager
  */
-export const createResponse = (
-  res: Response,
-  status: number,
-  message: string,
-  payload: object = {},
-  pager: object = {}
-) => {
+export const createResponse = (res: Response, status: number, message: string, payload: object = {}, pager: object = {}): Response<any> => {
   const resPager: object = typeof pager !== 'undefined' ? pager : {};
 
   return res.status(status).json({
@@ -33,12 +27,6 @@ export const createResponse = (
  *
  * @return {*|Sequelize.json|Promise<any>}
  */
-export const createValidationResponse = (res: Response, errors: any) => {
-  return createResponse(
-    res,
-    HttpStatus.UNPROCESSABLE_ENTITY,
-    errors[Object.keys(errors)[0]],
-    { error: errors[Object.keys(errors)[0]] },
-    {}
-  );
+export const createValidationResponse = (res: Response, errors: any): Response<any> => {
+  return createResponse(res, HttpStatus.UNPROCESSABLE_ENTITY, errors[Object.keys(errors)[0]], { error: errors[Object.keys(errors)[0]] }, {});
 };
