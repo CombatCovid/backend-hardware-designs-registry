@@ -10,7 +10,7 @@ export const resolvers: ResolverMap = {
   },
 
   Mutation: {
-    addDesign: async (_, args): Promise<any> => {
+    addDesign: async (_, args: GQL.IAddDesignOnMutationArguments): Promise<any> => {
       const newDesign = await DesignModel.addDesign(args);
       return newDesign;
     }

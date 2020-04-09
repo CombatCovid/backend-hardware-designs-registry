@@ -24,21 +24,21 @@ export default (async (): Promise<Server> => {
     origin: '*'
   };
   const port: string | number = process.env.PORT || 8080;
-  console.log(port);
+
   try {
-    const conn = await connection
+    await connection
       .then(() => {
-        console.log('Connected to db');
+        console.log('Connected to MongoDB');
       })
       .catch((e) => {
         throw new Error(e);
       });
-    console.log(conn);
 
     const app = await server.start({
       cors,
       port
     });
+
     console.log(`Server started on http://localhost:${port}`);
     return app;
   } catch (e) {

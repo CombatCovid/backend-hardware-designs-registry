@@ -1,4 +1,4 @@
-import { Design } from '../../models/design';
+import { Design } from '../../../models/design';
 
 export default {
   getDesigns: async (): Promise<any> => {

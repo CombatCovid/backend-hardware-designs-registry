@@ -1,6 +1,7 @@
-import { PostModel } from './models';
+import PostModel from './methods';
+import { ResolverMap } from '../../types';
 
-export const postResolver = {
+export const postResolver: ResolverMap = {
   Query: {
     getPosts: async (): Promise<any> => {
       const posts = await PostModel.getPosts();
@@ -9,10 +10,10 @@ export const postResolver = {
   },
 
   Mutation: {
-    addPost: async (_: any, { creatorId, ...args }): Promise<any> => {
+    addPost: async (_: any, { createdBy, ...args }: GQL.IAddPostOnMutationArguments): Promise<any> => {
       const newPost = await PostModel.addPost({
         ...args,
-        createdBy: creatorId
+        createdBy
       });
       return newPost;
     }
