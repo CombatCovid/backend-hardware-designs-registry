@@ -1,7 +1,7 @@
 import PostModel from './methods';
 import { ResolverMap } from '../../types';
 
-export const postResolver: ResolverMap = {
+export const resolvers: ResolverMap = {
   Query: {
     getPosts: async (): Promise<any> => {
       const posts = await PostModel.getPosts();

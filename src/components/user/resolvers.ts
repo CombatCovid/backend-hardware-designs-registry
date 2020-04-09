@@ -1,7 +1,7 @@
 import UserModel from './methods';
 import { ResolverMap } from '../../types';
 
-export const userResolvers: ResolverMap = {
+export const resolvers: ResolverMap = {
   Mutation: {
     signUp: async (_, { username, ...args }: GQL.ISignUpOnMutationArguments): Promise<any> => {
       const user = await UserModel.getUser({ username });
