@@ -1,3 +1,8 @@
+/**
+ * narration-sd
+ * 
+ * This is Resolver where we can define the Query an Mutation
+ */
 import { PostModel } from './models';
 
 export const postResolver = {

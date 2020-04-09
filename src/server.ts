@@ -21,11 +21,21 @@ import { designResolver } from './components/design';
 import { postResolver } from './components/post';
 import { userResolvers } from './components/user';
 
+/**
+ * narration-sd
+ * 
+ * Here we are binding our resolvers and typedefs in schema
+ */
 const schema: GraphQLSchema = makeExecutableSchema({
   typeDefs: [postTypeDef, designTypeDef, userTypeDef],
   resolvers: [postResolver, designResolver, userResolvers]
 });
 
+/**
+ * narration-sd
+ * 
+ * Passing schema to create a Apollo Server
+ */
 const server = new ApolloServer({ schema });
 
 server.applyMiddleware({ app });
