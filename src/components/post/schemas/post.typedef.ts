@@ -1,3 +1,9 @@
+/**
+ * narration-sd
+ * 
+ * Here we are doing schema stiching for our resolver
+ */
+
 import { gql } from 'apollo-server-express';
 
 export const postTypeDef = gql`

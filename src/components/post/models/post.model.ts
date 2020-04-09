@@ -1,3 +1,8 @@
+/**
+ * narration-sd
+ * 
+ * This is model where we can interact with db operation
+ */
 import { Post } from '../schemas';
 
 class PostModel {
