@@ -1,3 +1,8 @@
+/**
+ * narration-sd
+ * 
+ * This is our Database Schema
+ */
 import { model, Schema } from 'mongoose';
 
 const PostSchema = new Schema({
