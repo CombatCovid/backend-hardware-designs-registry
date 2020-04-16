@@ -1,13 +1,4 @@
-<<<<<<< HEAD:src/components/post/methods/index.ts
 import { Post } from '../../../models/post';
-=======
-/**
- * narration-sd
- * 
- * This is model where we can interact with db operation
- */
-import { Post } from '../schemas';
->>>>>>> 344dbe59dab7fc29e2282f2502d07e740cb5a37d:src/components/post/models/post.model.ts
 
 export default {
   getPosts: async (): Promise<any> => {
