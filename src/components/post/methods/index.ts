@@ -1,7 +1,7 @@
-import { Post } from '../schemas';
+import { Post } from '../../../models/post';
 
-class PostModel {
-  public async getPosts() {
+export default {
+  getPosts: async (): Promise<any> => {
     try {
       const posts = await Post.find({})
         .sort({ createdDate: 'desc' })
@@ -12,18 +12,16 @@ class PostModel {
 
       return posts;
     } catch (error) {
-      throw error;
+      throw new Error(error);
     }
-  }
+  },
 
-  public async addPost(obj) {
+  addPost: async (obj: GQL.IAddPostOnMutationArguments): Promise<any> => {
     try {
       const newPost = await new Post(obj).save();
       return newPost;
     } catch (error) {
-      throw error;
+      throw new Error(error);
     }
   }
-}
-
-export default new PostModel();
+};

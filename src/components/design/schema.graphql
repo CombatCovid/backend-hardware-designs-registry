@@ -1,0 +1,20 @@
+type Design {
+  _id: ID
+  author: String
+  gitRepo: String!
+  imageUrl: String
+  stars: Int
+  # comment: [Comment]
+  date: String
+  version: Int
+  license: String
+  createdBy: User
+}
+
+type Query {
+  getDesigns: [Design]
+}
+
+type Mutation {
+  addDesign(author: String, gitRepo: String!, imageUrl: String, stars: Int, date: String, version: Int, license: String, createdBy: Int): Design!
+}
