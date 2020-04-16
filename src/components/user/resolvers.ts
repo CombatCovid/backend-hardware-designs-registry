@@ -1,8 +1,9 @@
-import { UserModel } from './models';
+import UserModel from './methods';
+import { ResolverMap } from '../../types';
 
-export const userResolvers = {
+export const resolvers: ResolverMap = {
   Mutation: {
-    signUp: async (_, { username, email, password }) => {
+    signUp: async (_, { username, ...args }: GQL.ISignUpOnMutationArguments): Promise<any> => {
       const user = await UserModel.getUser({ username });
       if (user) {
         throw new Error('User already exists');
@@ -10,8 +11,7 @@ export const userResolvers = {
 
       const newUser = await UserModel.addUser({
         username,
-        email,
-        password
+        ...args
       });
       return newUser;
     }
