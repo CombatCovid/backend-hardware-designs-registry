@@ -5,7 +5,7 @@ import { Server } from 'http';
 
 import { genSchema } from './utils/genSchema';
 import { connection } from './utils/dbConnection';
-import { redis } from './redis';
+import { redis } from './utils/redis';
 import { redisSessionPrefix } from './utils/constants';
 
 const RedisStore = connectRedis(session);
