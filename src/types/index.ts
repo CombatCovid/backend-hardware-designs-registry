@@ -1,6 +1,18 @@
 // Here i declare all the types and interfaces
+import { Redis } from 'ioredis';
 
-export type Resolver = (parent: any, args: any, context: any, info: any) => any;
+export interface Session extends Express.Session {
+  userId?: string;
+}
+
+export interface Context {
+  redis: Redis;
+  url: string;
+  session: Session;
+  req: Express.Request;
+}
+
+export type Resolver = (parent: any, args: any, context: Context, info: any) => any;
 
 export interface ResolverMap {
   [key: string]: {
