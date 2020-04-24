@@ -16,7 +16,6 @@ export const startServer = async (): Promise<Server> => {
     schema,
     context: ({ request }): any => ({
       redis,
-      // @ts-ignore
       session: request.session,
       req: request
     })
