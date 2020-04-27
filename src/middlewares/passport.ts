@@ -1,7 +1,7 @@
 import { Application } from 'express';
 import * as passport from 'passport';
 import { Strategy } from 'passport-github2';
-import { User } from 'src/components/user/user.model';
+import { User } from '../components/user/user.model';
 
 export default (app: Application) => {
   app.use(passport.initialize());
