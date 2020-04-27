@@ -9,12 +9,13 @@ const UserSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
+    // required: true,
     trim: true
   },
+  githubId: String,
   password: {
     type: String,
-    required: true,
+    // required: true,
     trim: true
   },
   avatar: {
