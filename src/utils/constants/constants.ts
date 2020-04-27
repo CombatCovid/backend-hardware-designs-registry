@@ -4,6 +4,6 @@ export const ERROR_MSG = {
   UNAUTHORIZED: 'Unauthorized'
 };
 
-export const redisSessionPrefix = 'sess:';
-export const userSessionIdPrefix = 'userSids';
-export const forgotPasswordPrefix = 'forgotPassword';
+export const REDIS_SESSION_PREFIX = 'sess:';
+export const USER_SESSION_ID_PREFIX = 'userSids';
+export const FORGOT_PASSWORD_PREFIX = 'forgotPassword';

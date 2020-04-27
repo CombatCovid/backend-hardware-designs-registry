@@ -1,10 +1,10 @@
 import * as bodyParser from 'body-parser';
-import compression from 'compression';
-import cors from 'cors';
-import express from 'express';
+import * as compression from 'compression';
+import * as cors from 'cors';
+import { Application } from 'express';
 
 class Middlewares {
-  public init(app: express.Application) {
+  public init(app: Application) {
     app.use(bodyParser.json());
     app.use('*', cors());
     app.use(compression());

@@ -1,33 +1,35 @@
-import express from 'express';
+import * as express from 'express';
+import * as passport from 'passport';
 import { middlewares } from './middlewares/index';
-import { routes } from './routes/index';
 
-class App {
-  public app: express.Application;
-
-  constructor() {
-    this.app = express();
-    this.middlewares();
-    // this.mountRoutes();
+export class App {
+  constructor(app: express.Application) {
+    this.middlewares(app);
+    this.mountRoutes(app);
   }
 
-  private middlewares(): void {
-    middlewares.init(this.app);
+  private middlewares(app: express.Application): void {
+    middlewares.init(app);
   }
 
-  private mountRoutes(): void {
+  private mountRoutes(app: express.Application): void {
     // Health Check
-    this.app.get('/health', (req: express.Request, res: express.Response) => {
+    app.get('/health', (_: express.Request, res: express.Response) => {
       res.status(200).json({ success: true });
     });
 
-    // routes.init(this.app);
+    // Github auth routes
+    app.get('/auth/github', passport.authenticate('github'));
+
+    app.get('/auth/github/callback', passport.authenticate('github', { session: false }), (_, res) => {
+      res.redirect('/');
+    });
+
+    // routes.init(app);
 
     // Invalid Route
-    this.app.all('/*', (req: express.Request, res: express.Response) => {
+    app.all('/*', (_: express.Request, res: express.Response) => {
       res.status(400).json({ status: 400, message: 'Bad Request' });
     });
   }
 }
-
-export default new App().app;
